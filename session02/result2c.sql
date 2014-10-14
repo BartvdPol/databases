@@ -4,9 +4,7 @@
 
 .headers on
 
-SELECT p.name From Person p
-WHERE EXISTS (
-	SELECT * FROM Writes w /* er bestaat een schrijver p */
+SELECT p.name From Person p, Writes w
 	WHERE  p.pid = w.pid 
 	AND EXISTS (
 		SELECT * FROM Movie m /* er bestaat een film die geschreven is door schrijver p */
@@ -16,4 +14,4 @@ WHERE EXISTS (
 			WHERE d.mid = m.mid
 		)
 	)
-);
+;
