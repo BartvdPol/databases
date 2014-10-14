@@ -5,4 +5,6 @@
 .headers on
 
 SELECT p.name From Person p
-WHERE heeft films geschreven en de film is regiseurloos.
+WHERE EXISTS (
+	SELECT * FROM Writes w /* er bestaat een schrijver p */
+	WHERE  film is regiseurloos.
