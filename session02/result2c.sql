@@ -5,4 +5,4 @@
 .headers on
 
 SELECT p.name From Person p
-WHERE heeft regisseurloze films geschreven.
+WHERE heeft films geschreven en de film is regiseurloos.
