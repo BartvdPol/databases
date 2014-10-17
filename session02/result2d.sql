@@ -4,31 +4,18 @@
 
 .headers on
 
-SELECT p.name From Person p
-WHERE EXISTS (
-	SELECT * FROM Writes w /* er bestaat een schrijver p */
-	WHERE  p.pid = w.pid 
-	AND EXISTS (
-		SELECT * FROM Movie m /* er bestaat een film die geschreven is door schrijver p */
-		WHERE m.mid = w.mid
+SELECT p.name From Person p, Writes w, Movie m
+	WHERE  p.pid = w.pid AND m.mid = w.mid
 		AND NOT EXISTS (
 			SELECT * FROM Directs d
 			WHERE d.mid = m.mid
 		)
-	)
-) 
 AND p.name NOT IN(
-SELECT p.name From Person p
-WHERE EXISTS (
-	SELECT * FROM Writes w /* er bestaat een schrijver p */
-	WHERE  p.pid = w.pid 
-	AND EXISTS (
-		SELECT * FROM Movie m /* er bestaat een film die geschreven is door schrijver p */
-		WHERE m.mid = w.mid
+SELECT p.name From Person p, Writes w, Movie m
+	WHERE  p.pid = w.pid AND m.mid = w.mid
 		AND EXISTS (
 			SELECT * FROM Directs d
 			WHERE d.mid = m.mid
 		)
-	)
-)
+;
 );

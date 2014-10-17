@@ -10,5 +10,4 @@ SELECT p.name From Person p, Writes w, Movie m
 			SELECT * FROM Directs d
 			WHERE d.mid = m.mid
 		)
-	
 ;
