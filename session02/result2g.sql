@@ -1,4 +1,4 @@
-SELECT name, runtime, Count(*) count
+SELECT Movie.mid, name
 FROM Movie, Runtime
 WHERE Runtime.mid = Movie.mid AND name NOT IN (
 	SELECT name
@@ -9,4 +9,5 @@ WHERE Runtime.mid = Movie.mid AND name NOT IN (
 )
 GROUP BY name
 HAVING COUNT(*) >1
+ORDER BY Movie.mid
 ;
