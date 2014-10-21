@@ -1,8 +1,5 @@
 /*      */
 
-.mode columns
-
-.headers on
 
 SELECT p.name, COUNT(*) count
 FROM Acts a, Person p, Movie m

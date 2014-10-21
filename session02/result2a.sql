@@ -1,1 +1,1 @@
-Select name,year From Movie where rating > 8.6 and rating < 9.1;
+Select year,name From Movie where rating > 8.6 and rating < 9.1;
